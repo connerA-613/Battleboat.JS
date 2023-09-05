@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Account Page</title>
+	<link rel="stylesheet" type="text/css" href="slide navbar style.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+<link href="css/main.css"  rel="stylesheet" media="all"/>
+</head>
+
+<%- include('partials/header.ejs', {isLogged: isLogged, user: user, acc: true}) %>
+
+<body>
+	<div style="justify-content: center;margin-top: 7%;padding-left: 43%;">
+		<h2>Username: <%= user.username%></h2>
+		<h2>Email: <%= user.email%></h2> 
+		<h2>Games Played: <%= user.games_played%></h2> 	  
+		<h2>Games Won: <%= user.games_won%></h2>
+		<h2>Win/Loss Ratio: <%= user.win_percentage%></h2>
+		<h2>Shot Accuracy: <%= user.accuracy%></h2> 
+		<!-- <h2>Winning Streak: <%= user.win_streak%></h2> -->
+		<h2>HQs Destroyed: <%= user.hq_won%></h2> 
+		<!-- <h2>HQ Games Played: <%= user.hq_games_played%></h2>  -->
+		<a href="/" style="margin-top: 2%;"><button>Go Back</button></a>
+	</div>
+    <!-- <button><a href="/">Go Back</a></button> -->
+</body>
+</html>

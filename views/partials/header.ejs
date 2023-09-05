@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="page-header">
+      <div class="logo">
+        <img src="img/logo.PNG" alt="BB.js Logo" height="100px">
+      </div>
+      <a id="menu-icon" class="menu-icon" onclick="onMenuClick()">
+        <i class="fa fa-bars"></i>
+      </a>
+      
+      <div>
+      </div>
+
+      <input type="hidden" id="accVal" value=<%=acc%>>
+
+      <div id="navigation-bar" class="header-right nav-bar" style="margin-top: 35px;">
+        <a href="/" onclick = "makeActive()" id='home' class="nav-link active">Home</a>
+        <% if (isLogged == false) {%>
+            <a  onclick = "makeActive()" href="/login" class="nav-link out">Log in</a>
+            <a  onclick = "makeActive()" href="/signup" class="nav-link out">Sign Up</a>
+        <% } else { %>
+            <a href="/account" onclick = "makeActive()" class="nav-link in">Account</a>
+            <a href="/logout" onclick = "makeActive()" class="nav-link in">Log Out</a>
+        <% }%>
+      </div>
+    </div>
+  </body>
+
+
+  <style>
+    :root {
+      --bgcolor: #1a79cf;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-header {
+      background-color: var(--bgcolor);
+      padding: 1.3rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .logo {
+      color: white;
+      align-self: center;
+      margin-left: 1.2rem;
+      font-size: 2.5rem;
+    }
+
+    .nav-bar {
+      margin: 10px;
+    }
+
+    .nav-bar a {
+      color: white;
+      padding: 1.5rem;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 1.2rem;
+      border-radius: 15px;
+    }
+
+    .menu-icon {
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+
+    button {
+      font-size: 1rem;
+      border: 1px solid black;
+      border-radius: 5px;
+      padding: 0.9rem;
+    }
+    
+    .header a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    
+    .nav-bar .active{
+      background-color: white;
+      color: var(--bgcolor);
+    }
+    
+    @media screen and (max-width: 700px){
+        .nav-bar {
+        display: none;
+        position: absolute;
+        top: 3.7rem;
+        left: 0;
+        width: 100%;
+        background-color: var(--bgcolor);
+        text-align: center;
+        }
+
+        .nav-bar.responsive {
+        display: block;
+        }
+
+        .nav-bar a {
+        display: block;
+        }
+
+        .menu-icon {
+        display: block;
+        z-index: 1;
+        }
+
+        button {
+        padding: 0.4rem;
+        }
+    
+        .logo {
+        font-size: 1.4rem;
+        }
+    }
+  
+
+  </style>
+  
+  <script>
+    function onMenuClick() {
+        var navbar = document.getElementById("navigation-bar");
+        var responsive_class_name = "responsive";
+
+        navbar.classList.toggle(responsive_class_name);
+    }
+
+    function onLogoutClick(isLogged) {
+      function onLogoutClick() {
+  // clear the user object from local storage
+  localStorage.removeItem('user');
+
+  // set isLoggedVar to false
+  isLoggedVar = false;
+
+  // redirect to the login page
+  window.location.href = '/login';
+}
+}
+    
+    const links = document.querySelectorAll('.nav-link');
+    
+    if (links.length) {
+      links.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          links.forEach((link) => {
+              link.classList.remove('active');
+          });
+          e.preventDefault();
+          link.classList.add('active');
+          window.location.href = link.href;
+        });
+      });
+    }
+
+    const val = document.getElementById('accVal').value
+    console.log(val)
+    if (val === "true"){
+      console.log()
+      var acc = document.getElementById('acc')
+      var home = document.getElementById('home')
+
+      home.classList.remove('active');
+      acc.classList.add('active');
+    }
+
+    
+    
+</script>
+</html>
